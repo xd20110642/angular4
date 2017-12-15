@@ -1,0 +1,29 @@
+<form [formGroup]="formModel" novalidate (submit)="onSearch()">
+  <div class="input-group">
+    <label for="priceTitile">请输入商品的名字</label>
+    <input type="text" class="form-control" placeholder="请输入商品的名字" aria-describedby="basic-addon1" id="priceTitile" formControlName="product">
+   <div [class.hidden]="!formModel.hasError('minlength','product')">
+    <span>123</span>
+  </div>
+  </div>
+
+  <div class="input-group">
+    <label for="pricePrice">请输入商品的价格</label>
+    <input type="text" class="form-control" placeholder="请输入商品的价格" aria-describedby="basic-addon1" id="pricePrice" formControlName="price">
+    <div [class.hidden]="!formModel.hasError('positiveNumber','price')">
+      <span>价格不能为负</span>
+    </div>
+  </div>
+
+  <div class="input-group">
+    <label for="productCategory">商品类别：</label>
+    <select id="productCategory" class="form-control"  formControlName="aa">
+      <option *ngFor="let p of lei" [value]="p">{{p}}</option>
+    </select>
+  </div>
+
+  <div class="input-group">
+    <button type="submit" class="btn btn-primary btn-block">收索</button>
+  </div>
+</form>
+
